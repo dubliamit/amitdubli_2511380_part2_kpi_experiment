@@ -6,7 +6,7 @@ The company introduced a new onboarding and activation campaign (Treatment) to i
 
 The business decision depends on whether the Treatment group demonstrates a statistically significant improvement in the primary success metric without negatively affecting key guardrail metrics.
 
----
+
 
 # Metric Being Tested
 
@@ -18,53 +18,33 @@ Paid Conversion Rate = (Number of users converted to paid ÷ Total users) × 100
 
 This metric is selected as the **North Star Metric** because it directly measures the company's primary business objective—converting new users into paying subscribers.
 
----
+
 
 # Hypotheses
 
 ## Null Hypothesis (H₀)
 
 The new onboarding campaign does **not** improve the Paid Conversion Rate.
-
-[
-H_0 : p_{Treatment} = p_{Control}
-]
-
-or equivalently,
-
-[
-H_0 : p_{Treatment} - p_{Control} = 0
-]
-
----
+H0​: μControl​=μTreatment​
 
 ## Alternative Hypothesis (H₁)
 
 The new onboarding campaign **improves** the Paid Conversion Rate.
-
-[
-H_1 : p_{Treatment} > p_{Control}
-]
-
----
+H1​: μTreatment​ > μControl​
 
 # Type of Test
 
-**One-tailed (Right-tailed) Test**
+**A Two-Sample t-Test Assuming Unequal Variances**
 
 ### Reason
 
-The business objective is specifically to determine whether the new onboarding campaign performs **better** than the existing onboarding experience. A decrease in conversion would not support launching the new campaign, so the analysis focuses only on detecting an improvement.
-
----
+A Two-Sample t-Test Assuming Unequal Variances was performed in Microsoft Excel to compare the Control and Treatment groups. Since the primary metric is binary (converted/not converted),the t-test indicates a statistically significant improvement in the Treatment group's conversion rate.
 
 # Significance Level
 
 **α = 0.05 (5%)**
 
 This means the company accepts a 5% probability of incorrectly concluding that the Treatment is better when no real improvement exists (Type I Error).
-
----
 
 # Why This Metric Was Chosen
 
@@ -77,11 +57,9 @@ Paid Conversion Rate is the most appropriate metric because:
 
 Supporting metrics such as Trial Start Rate, Onboarding Completion Rate, and Engagement Score help explain user behavior but do not directly measure business success.
 
----
-
 # Interpretation Logic
 
-After performing a statistical hypothesis test (such as a Two-Proportion Z-Test):
+After performing a statistical hypothesis test 
 
 * **If p-value < 0.05**
 
@@ -94,8 +72,6 @@ After performing a statistical hypothesis test (such as a Two-Proportion Z-Test)
   * Fail to reject the Null Hypothesis.
   * Conclude that there is insufficient evidence that the Treatment improves conversions.
   * Recommend continuing the experiment or retaining the existing onboarding experience.
-
----
 
 # Connection to the Business Decision
 
