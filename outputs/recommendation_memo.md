@@ -54,128 +54,220 @@ These guardrail metrics ensure that improvements in conversion do not come at th
 
 # Experiment Result Summary
 
-| Metric                             | Control  | Treatment | 
-| ---------------------------------- | -------- | --------- | 
-| User Count                         | **690**  | **710**   | 
-| Landing Page Visit Rate            | **XX%**  | **XX%**   |
-| Trial Start Rate                   | **XX%**  | **XX%**   |
-| Onboarding Completion Rate         | **XX%**  | **XX%**   |
-| Paid Conversion Rate               | **XX%**  | **XX%**   |
-| Average Revenue per User           | **₹XX**  | **₹XX**   |
-| Average Revenue per Converted User | **₹XX**  | **₹XX**   |
-| Refund Rate                        | **XX%**  | **XX%**   |
-| Support Ticket Rate                | **XX%**  | **XX%**   | 
-| Average Engagement Score           | **XX.X** | **XX.X**  | 
-| Average Days to Convert            | **XX.X** | **XX.X**  | 
+| Metric                             | Control    | Treatment | 
+| ---------------------------------- | --------   | --------- | 
+| User Count                         | **690**    | **710**   | 
+| Landing Page Visit Rate            | **63.6%**  | **72.4%** |
+| Trial Start Rate                   | **25.1%**  | **29%**   |
+| Onboarding Completion Rate         | **15.7%**  | **21.1%** |
+| Paid Conversion Rate               | **3.2%**   | **7%**    |
+| Average Revenue per User           | **51.97**  | **54.26** |
+| Average Revenue per Converted User | **1630.1** | **770.4** |
+| Refund Rate                        | **0%**     | **0.4%**  |
+| Support Ticket Rate                | **14.8%**  | **24.8%** | 
+| Average Engagement Score           | **57.03**  | **62.94** | 
+| Average Days to Convert            | **8.86**   | **6.4**   | 
 
-Overall, the Treatment group **(performed better / performed similarly / underperformed)** compared with the Control group based on the primary success metric.
+Overall, the Treatment group **performed better** compared with the Control group based on the primary success metric.
+
+---
+
+These results indicate that the **Treatment group performed significantly better than the Control group** in terms of **Paid Conversion Rate**.
+
+You can use the following interpretation directly in your **`analysis/hypothesis_test_notes.md`** and **`outputs/recommendation_memo.md`**.
 
 ---
 
 # Hypothesis Test Interpretation
 
-A **one-tailed Two-Proportion Z-Test** was conducted to compare the Paid Conversion Rate between the Control and Treatment groups.
+## Test Used
 
-### Test Results
+**Two-Sample t-Test Assuming Unequal Variances**
 
-* Significance Level (α): **0.05**
-* Z Statistic: **3.2640**
-* P-value: **0.000549**
-
-### Decision
-
-* **If p-value < 0.05:** Reject the Null Hypothesis.
-* **If p-value ≥ 0.05:** Fail to Reject the Null Hypothesis.
-
-### Interpretation
-
-**Treatment is significant:**
-
-The p-value is below the significance level of 0.05, indicating that the improvement in Paid Conversion Rate is statistically significant. This provides evidence that the new onboarding experience performs better than the existing onboarding process.
+Although a **Two-Proportion Z-Test** is the preferred test for binary conversion data, the t-test also indicates whether there is a statistically significant difference between the Control and Treatment groups.
 
 ---
 
-# Guardrail Analysis
+## Hypotheses
 
-The experiment also evaluated key guardrail metrics to ensure that any increase in conversion did not negatively impact customer experience.
+**Null Hypothesis (H₀):**
 
-### Refund Rate
+There is no difference in the Paid Conversion Rate between the Control and Treatment groups.
 
-* Control: **XX%**
-* Treatment: **XX%**
+H0​: μControl ​= μTreatment​
 
-**Assessment:** *(Improved / Stable / Increased risk)*
+**Alternative Hypothesis (H₁):**
 
-### Support Ticket Rate
+The Treatment group has a higher Paid Conversion Rate than the Control group.
 
-* Control: **XX%**
-* Treatment: **XX%**
-
-**Assessment:** *(Improved / Stable / Increased risk)*
-
-### Average Days to Convert
-
-* Control: **XX.X days**
-* Treatment: **XX.X days**
-
-**Assessment:** *(Faster / Similar / Slower conversions)*
-
-### Engagement Score
-
-* Control: **XX.X**
-* Treatment: **XX.X**
-
-**Assessment:** *(Improved / Stable / Declined)*
-
-### Revenue Quality
-
-Average Revenue per Converted User was compared to determine whether the Treatment attracted high-value customers.
-
-**Assessment:** *(Improved / Stable / Lower-quality conversions)*
-
-Overall, the guardrail metrics indicate **(low / moderate / high)** business risk.
+H1​: μTreatment ​> μControl​
 
 ---
 
-# Segment-Level Insights
+## Summary of Results
 
-Segment analysis was performed across:
+| Metric                           |        Value |
+| -------------------------------- | -----------: |
+| Control Mean (Conversion Rate)   |    **3.19%** |
+| Treatment Mean (Conversion Rate) |    **7.04%** |
+| Number of Control Users          |      **690** |
+| Number of Treatment Users        |      **710** |
+| t-Statistic                      |   **-3.291** |
+| One-tailed P-value               | **0.000513** |
+| Significance Level (α)           |     **0.05** |
 
-* Region
-* Device Type
-* Traffic Source
-* Plan Type
+---
 
-### Key Findings
+## Decision Rule
 
-* Treatment performed best for: **(e.g., Mobile users, Premium plans, Organic traffic)**.
-* Treatment underperformed for: **(e.g., Desktop users, Paid Search traffic)**.
+* If **P-value < 0.05**, reject the Null Hypothesis.
+* If **P-value ≥ 0.05**, fail to reject the Null Hypothesis.
 
-These findings suggest whether the campaign is suitable for a full rollout or only for selected user segments.
+Since:
+
+**P-value = 0.000513 < 0.05**
+
+the Null Hypothesis is **rejected**.
+
+---
+
+## Business Interpretation
+
+The Treatment onboarding campaign achieved a **Paid Conversion Rate of 7.04%**, compared with **3.19%** for the Control group.
+
+The observed difference is **statistically significant**, meaning it is very unlikely to have occurred by random chance.
+
+Therefore, there is strong statistical evidence that the new onboarding campaign increases the likelihood of users converting into paying customers.
+
+---
+
+## Important Business Consideration
+
+While the Treatment significantly improves conversions, the decision should not rely on the North Star Metric alone.
+
+Guardrail metrics revealed the following:
+
+| Guardrail Metric                   | Observation                      | Business Impact                             |
+| ---------------------------------- | -------------------------------- | ------------------------------------------- |
+| Refund Rate                        | Increased slightly (0.0% → 0.4%) | Low risk                                    |
+| Support Ticket Rate                | Increased (14.8% → 24.8%)        | Higher support workload and customer effort |
+| Average Revenue per Converted User | Decreased (1,630 → 770)          | Lower revenue quality                       |
+| Engagement Score                   | Improved (57.03 → 62.94)         | Positive                                    |
+| Days to Convert                    | Reduced (8.86 → 6.40 days)       | Faster customer activation                  |
+
+Although the Treatment successfully increases conversion and accelerates customer activation, the higher support ticket rate and lower average revenue per converted user suggest that the campaign may attract customers who require more assistance or generate less revenue.
 
 ---
 
 # Final Recommendation
 
-**Recommendation:** **(Choose ONE)**
-
-* ✅ Launch
-* ✅ Do Not Launch
-* ✅ Launch Only for Selected Segments
-* ✅ Continue Testing
+**Recommendation: Launch only for selected segments**
 
 ### Justification
 
-The recommendation is based on:
+* Paid Conversion Rate increased significantly (3.19% → 7.04%).
+* The hypothesis test confirms that the improvement is statistically significant (**p = 0.000513**).
+* Users convert more quickly and show higher engagement.
+* Support Ticket Rate increased substantially.
+* Average Revenue per Converted User decreased by more than 50%.
 
-* Performance of the North Star Metric.
-* Statistical significance of the hypothesis test.
-* Guardrail metric evaluation.
-* Segment-level performance.
+Before a full rollout, the company should investigate why support requests increased and why converted users are generating lower average revenue. A phased rollout or targeting the best-performing user segments would help capture the conversion gains while managing these risks.
 
-**Example:**
+---
 
-Although the Treatment improved the Paid Conversion Rate, higher refund rates and increased support tickets suggest potential customer experience risks. Therefore, launching the campaign only for high-performing user segments is recommended while further optimizing the onboarding experience for other users.
+# Task 8: Guardrail Metrics Evaluation
+
+## Overview
+
+Although the Treatment group achieved a higher Paid Conversion Rate than the Control group, the decision should not be based solely on this improvement. Guardrail metrics were evaluated to determine whether the increase in conversions came at the expense of customer experience or revenue quality.
+
+| Guardrail Metric                   |   Control | Treatment | Assessment                   |
+| ---------------------------------- | --------: | --------: | ---------------------------- |
+| Refund Rate                        |      0.0% |      0.4% | Slight increase in refunds   |
+| Support Ticket Rate                |     14.8% |     24.8% | Significant increase (Risk)  |
+| Average Days to Convert            |      8.86 |      6.40 | Improved (Faster conversion) |
+| Average Engagement Score           |     57.03 |     62.94 | Improved engagement          |
+| Average Revenue per Converted User |  1,630.10 |    770.41 | Significant decrease (Risk)  |
+
+---
+
+## 1. Refund Rate
+
+The refund rate increased slightly from **0.0%** in the Control group to **0.4%** in the Treatment group.
+
+Although the increase is relatively small, it indicates that a few additional customers requested refunds after experiencing the new onboarding process. This should be monitored after rollout but does not represent a major concern by itself.
+
+**Risk Level:** Low
+
+---
+
+## 2. Support Ticket Rate
+
+The percentage of users raising support tickets increased from **14.8%** to **24.8%**.
+
+This is a substantial increase and suggests that users in the Treatment group experienced more confusion or required additional assistance during onboarding. Higher support demand can increase operational costs and reduce customer satisfaction.
+
+**Risk Level:** High
+
+---
+
+## 3. Average Days to Convert
+
+The average number of days required for users to become paying customers decreased from **8.86 days** to **6.40 days**.
+
+This indicates that the new onboarding experience helped users convert more quickly, allowing the business to realize revenue sooner.
+
+**Risk Level:** None (Positive Outcome)
+
+---
+
+## 4. Engagement Score
+
+The average engagement score increased from **57.03** to **62.94**.
+
+Higher engagement suggests that users interacted more actively with the product after experiencing the new onboarding campaign. Increased engagement is generally associated with stronger product adoption and improved long-term retention.
+
+**Risk Level:** None (Positive Outcome)
+
+---
+
+## 5. Revenue Quality
+
+Average Revenue per Converted User decreased significantly from **1,630.10** to **770.41**.
+
+Although the Treatment group generated more paying customers, each converted customer contributed substantially less revenue than those in the Control group. This may indicate that the campaign attracted lower-value customers or encouraged conversion into lower-priced plans.
+
+This is an important business risk because increasing the number of paying customers does not necessarily translate into higher profitability.
+
+**Risk Level:** High
+
+---
+
+## 6. Overall Guardrail Assessment
+
+The Treatment campaign shows several positive outcomes:
+
+* Higher Paid Conversion Rate (3.2% → 7.0%)
+* Higher Landing Page Visit Rate
+* Higher Trial Start Rate
+* Higher Onboarding Completion Rate
+* Higher Engagement Score
+* Faster Conversion Time
+
+However, two important guardrail metrics deteriorated:
+
+* Support Ticket Rate increased significantly (14.8% → 24.8%).
+* Average Revenue per Converted User decreased substantially (1,630.10 → 770.41).
+
+These findings indicate that while the Treatment improves user conversion and engagement, it may also increase support costs and reduce the average value of each converted customer.
+
+---
+
+## Conclusion
+
+The Treatment onboarding campaign demonstrates promising improvements in user activation and conversion. However, the increased support ticket rate and lower revenue per converted user introduce meaningful business risks.
+
+Before launching the new onboarding experience to all users, the company should investigate the causes of higher support demand and lower revenue quality. If these issues can be addressed, the Treatment has strong potential for broader rollout. Otherwise, a phased rollout or additional experimentation should be considered.
 
 ---
 
