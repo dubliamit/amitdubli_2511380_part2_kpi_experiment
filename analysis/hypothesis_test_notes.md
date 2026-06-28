@@ -6,8 +6,6 @@ The company introduced a new onboarding and activation campaign (Treatment) to i
 
 The business decision depends on whether the Treatment group demonstrates a statistically significant improvement in the primary success metric without negatively affecting key guardrail metrics.
 
-
-
 # Metric Being Tested
 
 **Primary Metric:** Paid Conversion Rate
@@ -17,8 +15,6 @@ The business decision depends on whether the Treatment group demonstrates a stat
 Paid Conversion Rate = (Number of users converted to paid ÷ Total users) × 100
 
 This metric is selected as the **North Star Metric** because it directly measures the company's primary business objective—converting new users into paying subscribers.
-
-
 
 # Hypotheses
 
