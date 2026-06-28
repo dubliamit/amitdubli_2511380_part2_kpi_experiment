@@ -7,8 +7,6 @@ An A/B test was conducted to evaluate the effectiveness of a new onboarding and 
 
 The analysis evaluated the North Star Metric, supporting KPIs, hypothesis test results, guardrail metrics, and segment-level performance before making a business recommendation.
 
----
-
 # North Star Metric
 
 **Paid Conversion Rate**
@@ -18,8 +16,6 @@ The analysis evaluated the North Star Metric, supporting KPIs, hypothesis test r
 Paid Conversion Rate = (Number of Paid Conversions ÷ Total Users) × 100
 
 This metric was selected because it directly measures the business objective of increasing the number of paying subscribers and has the strongest impact on subscription revenue.
-
----
 
 # KPI Tree Explanation
 
@@ -70,23 +66,13 @@ These guardrail metrics ensure that improvements in conversion do not come at th
 
 Overall, the Treatment group **performed better** compared with the Control group based on the primary success metric.
 
----
-
 These results indicate that the **Treatment group performed significantly better than the Control group** in terms of **Paid Conversion Rate**.
-
-You can use the following interpretation directly in your **`analysis/hypothesis_test_notes.md`** and **`outputs/recommendation_memo.md`**.
-
----
 
 # Hypothesis Test Interpretation
 
 ## Test Used
 
 **Two-Sample t-Test Assuming Unequal Variances**
-
-Although a **Two-Proportion Z-Test** is the preferred test for binary conversion data, the t-test also indicates whether there is a statistically significant difference between the Control and Treatment groups.
-
----
 
 ## Hypotheses
 
@@ -101,8 +87,6 @@ H0​: μControl ​= μTreatment​
 The Treatment group has a higher Paid Conversion Rate than the Control group.
 
 H1​: μTreatment ​> μControl​
-
----
 
 ## Summary of Results
 
@@ -129,8 +113,6 @@ Since:
 
 the Null Hypothesis is **rejected**.
 
----
-
 ## Business Interpretation
 
 The Treatment onboarding campaign achieved a **Paid Conversion Rate of 7.04%**, compared with **3.19%** for the Control group.
@@ -139,12 +121,9 @@ The observed difference is **statistically significant**, meaning it is very unl
 
 Therefore, there is strong statistical evidence that the new onboarding campaign increases the likelihood of users converting into paying customers.
 
----
-
 ## Important Business Consideration
 
 While the Treatment significantly improves conversions, the decision should not rely on the North Star Metric alone.
-
 Guardrail metrics revealed the following:
 
 | Guardrail Metric                   | Observation                      | Business Impact                             |
@@ -156,8 +135,6 @@ Guardrail metrics revealed the following:
 | Days to Convert                    | Reduced (8.86 → 6.40 days)       | Faster customer activation                  |
 
 Although the Treatment successfully increases conversion and accelerates customer activation, the higher support ticket rate and lower average revenue per converted user suggest that the campaign may attract customers who require more assistance or generate less revenue.
-
----
 
 # Final Recommendation
 
@@ -173,8 +150,6 @@ Although the Treatment successfully increases conversion and accelerates custome
 
 Before a full rollout, the company should investigate why support requests increased and why converted users are generating lower average revenue. A phased rollout or targeting the best-performing user segments would help capture the conversion gains while managing these risks.
 
----
-
 # Task 8: Guardrail Metrics Evaluation
 
 ## Overview
@@ -189,7 +164,6 @@ Although the Treatment group achieved a higher Paid Conversion Rate than the Con
 | Average Engagement Score           |     57.03 |     62.94 | Improved engagement          |
 | Average Revenue per Converted User |  1,630.10 |    770.41 | Significant decrease (Risk)  |
 
----
 
 ## 1. Refund Rate
 
@@ -199,8 +173,6 @@ Although the increase is relatively small, it indicates that a few additional cu
 
 **Risk Level:** Low
 
----
-
 ## 2. Support Ticket Rate
 
 The percentage of users raising support tickets increased from **14.8%** to **24.8%**.
@@ -208,8 +180,6 @@ The percentage of users raising support tickets increased from **14.8%** to **24
 This is a substantial increase and suggests that users in the Treatment group experienced more confusion or required additional assistance during onboarding. Higher support demand can increase operational costs and reduce customer satisfaction.
 
 **Risk Level:** High
-
----
 
 ## 3. Average Days to Convert
 
@@ -219,8 +189,6 @@ This indicates that the new onboarding experience helped users convert more quic
 
 **Risk Level:** None (Positive Outcome)
 
----
-
 ## 4. Engagement Score
 
 The average engagement score increased from **57.03** to **62.94**.
@@ -228,8 +196,6 @@ The average engagement score increased from **57.03** to **62.94**.
 Higher engagement suggests that users interacted more actively with the product after experiencing the new onboarding campaign. Increased engagement is generally associated with stronger product adoption and improved long-term retention.
 
 **Risk Level:** None (Positive Outcome)
-
----
 
 ## 5. Revenue Quality
 
@@ -240,8 +206,6 @@ Although the Treatment group generated more paying customers, each converted cus
 This is an important business risk because increasing the number of paying customers does not necessarily translate into higher profitability.
 
 **Risk Level:** High
-
----
 
 ## 6. Overall Guardrail Assessment
 
@@ -261,15 +225,11 @@ However, two important guardrail metrics deteriorated:
 
 These findings indicate that while the Treatment improves user conversion and engagement, it may also increase support costs and reduce the average value of each converted customer.
 
----
-
 ## Conclusion
 
 The Treatment onboarding campaign demonstrates promising improvements in user activation and conversion. However, the increased support ticket rate and lower revenue per converted user introduce meaningful business risks.
 
 Before launching the new onboarding experience to all users, the company should investigate the causes of higher support demand and lower revenue quality. If these issues can be addressed, the Treatment has strong potential for broader rollout. Otherwise, a phased rollout or additional experimentation should be considered.
-
----
 
 # Risks and Limitations
 
@@ -277,8 +237,6 @@ Before launching the new onboarding experience to all users, the company should 
 * Long-term customer retention and lifetime value (LTV) were not evaluated.
 * External factors such as seasonality or marketing campaigns may have influenced user behaviour.
 * Some user segments may require larger sample sizes to draw reliable conclusions.
-
----
 
 # Next Steps
 
@@ -288,8 +246,6 @@ Before launching the new onboarding experience to all users, the company should 
 4. Conduct additional experiments for underperforming user segments.
 5. Refine the onboarding experience using user feedback and behavioural insights.
 6. Re-evaluate performance after collecting additional data if statistical significance is not achieved.
-
----
 
 # Conclusion
 
